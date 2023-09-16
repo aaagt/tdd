@@ -1,11 +1,12 @@
 package aaagt.tdd.phone;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 
 public class PhoneBook {
 
-    private final Map<String, String> book = new HashMap<>();
+    private final Map<String, String> book = new TreeMap<>();
 
     public int add(String name, String phoneNumber) {
         if (book.containsKey(name)) {
@@ -15,7 +16,10 @@ public class PhoneBook {
         return book.size();
     }
 
-    public String findByNumber(String phoneNumber) {
-        return null;
+    public Optional<String> findByNumber(String phoneNumber) {
+        return book.entrySet().stream()
+                .filter(contact -> contact.getValue().equals(phoneNumber))
+                .map(contact -> contact.getKey())
+                .findFirst();
     }
 }

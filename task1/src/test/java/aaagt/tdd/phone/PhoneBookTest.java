@@ -36,9 +36,9 @@ public class PhoneBookTest {
         pb.add("bbb", "1212121212");
         pb.add("ccc", "1111111111");
         assertAll(
-                () -> assertEquals(pb.findByNumber("1234567890"), "aaa"),
-                () -> assertEquals(pb.findByNumber("1111111111"), "ccc"),
-                () -> assertEquals(pb.findByNumber("1212121212"), "bbb")
+                () -> assertEquals(pb.findByNumber("1234567890").get(), "aaa"),
+                () -> assertEquals(pb.findByNumber("1111111111").get(), "ccc"),
+                () -> assertEquals(pb.findByNumber("1212121212").get(), "bbb")
         );
     }
 }
