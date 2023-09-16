@@ -50,8 +50,8 @@ public class PhoneBookTest {
         pb.add("ccc", "1111111111");
         assertAll(
                 () -> assertEquals(pb.findByName("aaa").get(), "1234567890"),
-                () -> assertEquals(pb.findByName("ccc").get(), "1212121212"),
-                () -> assertEquals(pb.findByName("bbb").get(), "1111111111")
+                () -> assertEquals(pb.findByName("ccc").get(), "1111111111"),
+                () -> assertEquals(pb.findByName("bbb").get(), "1212121212")
         );
     }
 }
