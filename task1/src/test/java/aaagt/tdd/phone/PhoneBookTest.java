@@ -3,6 +3,9 @@ package aaagt.tdd.phone;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -53,5 +56,26 @@ public class PhoneBookTest {
                 () -> assertEquals(pb.findByName("ccc").get(), "1111111111"),
                 () -> assertEquals(pb.findByName("bbb").get(), "1212121212")
         );
+    }
+
+    @Test
+    void printAllNames() {
+        final PrintStream standardOut = System.out;
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        PhoneBook pb = new PhoneBook();
+        pb.add("aaa", "1234567890");
+        pb.add("bbb", "1212121212");
+        pb.add("ccc", "1111111111");
+
+        pb.printAllNames();
+
+        assertEquals("""
+                        aaa: 1234567890
+                        bbb: 1212121212
+                        ccc: 1111111111
+                        """,
+                outputStreamCaptor.toString());
     }
 }
