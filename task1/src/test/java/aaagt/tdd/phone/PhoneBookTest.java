@@ -60,8 +60,7 @@ public class PhoneBookTest {
 
     @Test
     void printAllNames() {
-        final PrintStream standardOut = System.out;
-        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
 
         PhoneBook pb = new PhoneBook();

@@ -27,5 +27,12 @@ public class PhoneBook {
         return Optional.ofNullable(book.getOrDefault(name, null));
     }
 
-    public void printAllNames() {}
+    public void printAllNames() {
+        book.entrySet().stream()
+                .forEach(contact -> System.out.printf(
+                        "%s: %s\n",
+                        contact.getKey(),
+                        contact.getValue()
+                ));
+    }
 }
