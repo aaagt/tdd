@@ -41,4 +41,17 @@ public class PhoneBookTest {
                 () -> assertEquals(pb.findByNumber("1212121212").get(), "bbb")
         );
     }
+
+    @Test
+    void findByName() {
+        PhoneBook pb = new PhoneBook();
+        pb.add("aaa", "1234567890");
+        pb.add("bbb", "1212121212");
+        pb.add("ccc", "1111111111");
+        assertAll(
+                () -> assertEquals(pb.findByName("aaa").get(), "1234567890"),
+                () -> assertEquals(pb.findByName("ccc").get(), "1212121212"),
+                () -> assertEquals(pb.findByName("bbb").get(), "1111111111")
+        );
+    }
 }

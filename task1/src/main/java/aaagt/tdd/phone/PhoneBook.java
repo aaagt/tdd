@@ -22,4 +22,8 @@ public class PhoneBook {
                 .map(contact -> contact.getKey())
                 .findFirst();
     }
+
+    public Optional<String> findByName(String name) {
+        return Optional.empty();
+    }
 }
